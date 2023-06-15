@@ -1,48 +1,41 @@
 import React, { Component } from "react";
 import Form from "./Form/Form";
+import { nanoid } from "nanoid";
 
 class App extends Component {
   state = {
     contacts: [],
-    name: ''
+    filter: ''
   }
 
-  handleImput = evt => {
-    evt.preventDefault();
-    const form = evt.currentTarget;
-    form.reset();
+  addContact = (name, number) => {
+    // console.log(this.state)
+
+    const contact = {
+      id: nanoid(),
+      name,
+      number,
+    }
+
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts]
+    }))
+  }
+
+  formSubmitHandler = data => {
+    console.log(data)
   }
 
   render() {
     return (
       <>
-       <form action="submit">
-                    <label htmlFor="">
-                        Name
-                        <input
-                            type="text"
-                            name="name"
-                            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                            required
-                            value={this.state.name}
-                        />
-                    </label>
+        <Form onSubmit={this.addContact} />
 
-                    <label htmlFor="">
-                        Contacts
-                        <input
-                            type="tel"
-                            name="number"
-                            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                            required
-                            value={this.state.contacts[0]}
-                        />
-                    </label>
-                    <button>Add contact</button>
-                </form>
-
+        <ul>
+          {this.state.contacts.map(contact => (
+            <li key={contact.name}>{contact.name} - {contact.number}</li>
+          ))}
+        </ul>
       </>
     );
   };
