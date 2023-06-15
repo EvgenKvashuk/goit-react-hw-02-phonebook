@@ -4,20 +4,20 @@ class Form extends Component {
     state = {
         name: '',
         number: '',
-        
-      }
+
+    }
 
     handleImput = evt => {
         this.setState({
             [evt.currentTarget.name]: evt.currentTarget.value
         })
     }
-
+  
     handleSubmit = e => {
         e.preventDefault();
 
         this.props.onSubmit(this.state.name, this.state.number)
-   
+
         this.reset();
     }
 
@@ -26,8 +26,7 @@ class Form extends Component {
     }
 
     render() {
-        const name = this.state.name
-        const number = this.state.number
+        const {name, number} = this.state
 
         return (
             <>
@@ -57,13 +56,6 @@ class Form extends Component {
                             onChange={this.handleImput}
                         />
                     </label>
-
-
-                    <input
-                            name="filter"
-                            value= 'filter'
-                    
-                        />
 
                     <button type="submit">Add contact</button>
                 </form>

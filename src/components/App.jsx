@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import Form from "./Form/Form";
 import { nanoid } from "nanoid";
+import Filter from "./Filter/Filter";
+import ContactsList from "./ContactsList/ContactsList";
 
 class App extends Component {
+  // ==============================================================================
   state = {
     contacts: [],
-    filter: ''
+    filter: '',
   }
-
+  // ==============================================================================
+  // CUSTOM METHODS
   addContact = (name, number) => {
-    // console.log(this.state)
-
     const contact = {
       id: nanoid(),
       name,
@@ -26,16 +28,33 @@ class App extends Component {
     console.log(data)
   }
 
+  changeFilter = (e) => {
+    this.setState({ filter: e.currentTarget.value })
+  }
+  // ==============================================================================
   render() {
+    const { contacts, filter } = this.state
+
+    const NormToLowerCaseFilter = this.state.filter.toLowerCase()
+    const FilteredContacts = this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(NormToLowerCaseFilter));
+
     return (
       <>
-        <Form onSubmit={this.addContact} />
+        <Form
+          onSubmit={this.addContact}
+        />
 
-        <ul>
-          {this.state.contacts.map(contact => (
-            <li key={contact.name}>{contact.name} - {contact.number}</li>
-          ))}
-        </ul>
+        <Filter
+          valey={filter}
+          onChange={this.changeFilter}
+        />
+
+        <ContactsList
+          contacts={FilteredContacts}
+        />
+
+
       </>
     );
   };
