@@ -51,7 +51,7 @@ class App extends Component {
         />
 
         <ContactsList
-          contacts={this.FilteredContacts}
+          contacts={FilteredContacts}
         />
 
 
