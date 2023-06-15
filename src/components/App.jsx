@@ -36,7 +36,7 @@ class App extends Component {
     const { contacts, filter } = this.state
 
     const NormToLowerCaseFilter = this.state.filter.toLowerCase()
-    const FilteredContacts = this.state.contacts.filter(contact =>
+    const FilteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(NormToLowerCaseFilter));
 
     return (
