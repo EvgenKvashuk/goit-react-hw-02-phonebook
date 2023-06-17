@@ -12,6 +12,7 @@ class App extends Component {
   }
   // ==============================================================================
   // CUSTOM METHODS
+
   addContact = (name, number) => {
     const contact = {
       id: nanoid(),
@@ -23,13 +24,19 @@ class App extends Component {
       contacts: [contact, ...contacts]
     }))
   }
-
+    
   formSubmitHandler = data => {
     console.log(data)
   }
 
   changeFilter = (e) => {
     this.setState({ filter: e.currentTarget.value })
+  }
+
+  deleteContact = contactId => {
+    this.setState(prevState =>({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }))
   }
   // ==============================================================================
   render() {
@@ -52,6 +59,7 @@ class App extends Component {
 
         <ContactsList
           contacts={FilteredContacts}
+          onDeleteContact={this.deleteContact}
         />
 
 
