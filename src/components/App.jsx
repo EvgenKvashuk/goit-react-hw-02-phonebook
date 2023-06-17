@@ -24,7 +24,7 @@ class App extends Component {
       contacts: [contact, ...contacts]
     }))
   }
-    
+
   formSubmitHandler = data => {
     console.log(data)
   }
@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   deleteContact = contactId => {
-    this.setState(prevState =>({
+    this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }))
   }

@@ -9,7 +9,6 @@ const ContactsList = ({ contacts, onDeleteContact }) => (
         </span>
         <button onClick={() => onDeleteContact(id)}>Dlete</button>
       </li>
-
     ))}
   </ul>
 );

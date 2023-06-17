@@ -12,7 +12,7 @@ class Form extends Component {
             [evt.currentTarget.name]: evt.currentTarget.value
         })
     }
-  
+
     handleSubmit = e => {
         e.preventDefault();
 
@@ -26,7 +26,7 @@ class Form extends Component {
     }
 
     render() {
-        const {name, number} = this.state
+        const { name, number } = this.state
 
         return (
             <>
