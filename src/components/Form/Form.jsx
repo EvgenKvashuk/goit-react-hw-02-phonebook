@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import css from './Form.module.css'
 
 class Form extends Component {
     state = {
@@ -27,8 +28,8 @@ class Form extends Component {
         const { name, number } = this.state
 
         return (
-            <>
-                <form action="submit" onSubmit={this.handleSubmit}>
+            <div className={css.wrapper}>
+                <form action="submit" onSubmit={this.handleSubmit} className={css.form}>
                     <label htmlFor="">
                         Name
                         <input
@@ -57,7 +58,7 @@ class Form extends Component {
 
                     <button type="submit">Add contact</button>
                 </form>
-            </>
+            </div>
         );
     };
 };
