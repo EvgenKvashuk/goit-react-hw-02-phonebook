@@ -5,7 +5,6 @@ class Form extends Component {
     state = {
         name: '',
         number: '',
-
     }
 
     handleImput = evt => {

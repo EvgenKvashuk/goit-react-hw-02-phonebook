@@ -19,9 +19,18 @@ class App extends Component {
       number,
     }
 
-    this.setState(({ contacts }) => ({
+    const names = this.state.contacts.map(contact => contact.name);
+    const numbers = this.state.contacts.map(contact => contact.number);
+
+    if (names.includes(name)) {
+      alert(`${name} is already in contacts`);
+    } else if (numbers.includes(number)) {
+      alert(`${number} is already in contacts`);
+    } else {
+        this.setState(({ contacts }) => ({
       contacts: [contact, ...contacts]
-    }))
+    }));
+    }
 
   }
 
