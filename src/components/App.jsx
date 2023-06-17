@@ -18,7 +18,7 @@ class App extends Component {
       name,
       number,
     }
-
+    
     const names = this.state.contacts.map(contact => contact.name);
     const numbers = this.state.contacts.map(contact => contact.number);
 
